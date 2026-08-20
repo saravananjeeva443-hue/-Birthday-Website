@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- DESIGN: Moonlit Butterfly Letter — preserve the intimate violet, glass-card story flow; temporary wishes remain a quiet memory layer beneath the final celebration. -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101542" />
+  <title>Happy Birthday Shalini 💙</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient-stars" aria-hidden="true"></div>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+  <div id="floating-layer" aria-hidden="true"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <audio id="birthday-bgm" loop preload="metadata" aria-hidden="true">
+    <source src="music/enadhuyirea-female-bgm.mp3" type="audio/mpeg" />
+  </audio>
+
+  <main id="birthday-app">
+    <!-- Scene 1: White rose bouquet -->
+    <section id="scene-bouquet" class="scene scene-bouquet is-active" aria-labelledby="bouquet-title">
+      <div class="moon" aria-hidden="true"></div>
+      <div class="story-card bouquet-card glass-card">
+        <p class="eyebrow">A little surprise, just for you</p>
+        <div class="bouquet-wrap" aria-hidden="true">
+          <div class="bouquet-glow"></div>
+          <img src="assets/purple-flower-bouquet.png" alt="" class="bouquet-image" />
+          <span class="bouquet-butterfly bouquet-butterfly--one" aria-hidden="true"><img src="assets/guide-butterfly-purple.png" alt="" class="butterfly-image" /></span>
+          <span class="bouquet-butterfly bouquet-butterfly--two" aria-hidden="true"><img src="assets/guide-butterfly-purple.png" alt="" class="butterfly-image" /></span>
+          <span class="bouquet-butterfly bouquet-butterfly--three" aria-hidden="true"><img src="assets/guide-butterfly-purple.png" alt="" class="butterfly-image" /></span>
+          <span class="bouquet-butterfly bouquet-butterfly--four" aria-hidden="true"><img src="assets/guide-butterfly-purple.png" alt="" class="butterfly-image" /></span>
+        </div>
+        <button id="bouquet-trigger" class="bouquet-trigger" type="button" aria-label="Open the bouquet surprise">This is for you <span>💜</span></button>
+      </div>
+    </section>
+
+    <!-- Scene 2: Purple butterfly guide -->
+    <section id="scene-guide" class="scene scene-guide" aria-labelledby="guide-title" hidden>
+      <div class="flight-path" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="story-card guide-card glass-card">
+        <p class="eyebrow">Something magical flew out</p>
+        <h2 id="guide-title" class="typing-line" aria-live="polite"></h2>
+        <p id="guide-prompt" class="guide-prompt">Touch the purple butterfly — it will guide you.</p>
+        <button id="guide-butterfly" class="butterfly-button guide-purple" type="button" aria-label="Touch the purple butterfly">
+          <span class="butterfly-halo"></span>
+          <img src="assets/guide-butterfly-purple.png" alt="Purple butterfly" class="butterfly-image" />
+        </button>
+      </div>
+    </section>
+
+    <!-- Scene 3: Photo reveal -->
+    <section id="scene-photo" class="scene scene-photo" aria-labelledby="photo-title" hidden>
+      <div class="story-card photo-card glass-card">
+        <p class="eyebrow">The butterfly found something for you</p>
+        <h2 id="photo-title">Touch Me ✦</h2>
+        <p id="photo-prompt" class="story-copy">Touch the butterfly to reveal the magic ✨</p>
+        <button id="photo-butterfly" class="butterfly-button guide-purple" type="button" aria-label="Touch the butterfly to reveal the birthday photo">
+          <span class="butterfly-halo"></span>
+          <img src="assets/guide-butterfly-purple.png" alt="Purple butterfly" class="butterfly-image" />
+        </button>
+        <div id="photo-reveal" class="photo-reveal" hidden>
+          <div class="photo-frame">
+            <img src="images/nila-birthday-collage.webp" alt="Nila’s purple birthday collage" />
+          </div>
+          <p class="photo-caption">A special gift just for you 💜</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 4: Wish page -->
+    <section id="scene-wish" class="scene scene-wish" aria-labelledby="wish-title" hidden>
+      <div class="story-card wish-card glass-card">
+        <p class="eyebrow">The butterfly carried you to the stars</p>
+        <h2 id="wish-title">Send your wish into the night sky ✦</h2>
+        <p class="story-copy">Write one wish from your heart. When you send it, your wish will become a star.</p>
+        <label for="wish-input" class="sr-only">Your wish</label>
+        <textarea id="wish-input" maxlength="160" rows="3" placeholder="I wish for..."></textarea>
+        <button id="send-wish" class="primary-button" type="button">Send your wish ✦</button>
+        <p id="wish-status" class="wish-status" role="status" aria-live="polite"></p>
+        <button id="wish-butterfly" class="butterfly-button guide-purple is-locked" type="button" aria-label="Touch the butterfly to fly to the final page" disabled>
+          <span class="butterfly-halo"></span>
+          <img src="assets/guide-butterfly-purple.png" alt="Purple butterfly" class="butterfly-image" />
+        </button>
+        <p id="wish-prompt" class="guide-prompt">Send your wish first; then follow the butterfly.</p>
+      </div>
+    </section>
+
+    <!-- Scene 5: Final surprise -->
+    <section id="scene-final" class="scene scene-final" aria-labelledby="final-title" hidden>
+      <div class="final-burst" aria-hidden="true"></div>
+      <div class="story-card final-card glass-card">
+        <div class="final-butterfly butterfly-button guide-purple" aria-hidden="true">
+          <span class="butterfly-halo"></span>
+          <img src="assets/guide-butterfly-purple.png" alt="" class="butterfly-image" />
+        </div>
+        <p class="eyebrow">Your surprise has arrived</p>
+        <p class="section-label">Send your wish</p>
+        <h2 id="final-title">Happy Birthday<br /><span>Shalini 💙</span></h2>
+        <p class="final-copy">May your heart stay gentle, your dreams stay bright, and every new chapter bring you closer to the life you deserve.</p>
+        <div class="final-hearts" aria-hidden="true">♡ ✦ ♡</div>
+        <p class="made-with-love">Made with Love ❤️</p>
+        <section id="session-wishes" class="session-wishes" aria-labelledby="session-wishes-title" hidden>
+          <p class="eyebrow">A little memory from this visit</p>
+          <h3 id="session-wishes-title">Wishes sent tonight</h3>
+          <div id="session-wish-list" class="session-wish-list" aria-live="polite"></div>
+          <p class="tiny-note">These wishes stay visible only until this page is refreshed.</p>
+        </section>
+        <button id="replay" class="secondary-button" type="button">Experience it again ↺</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
